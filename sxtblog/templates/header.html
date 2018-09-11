@@ -1,0 +1,15 @@
+<div id="banner"></div>
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <nav id="main-nav">
+                <a class="main-nav-link" href="{% url 'blog:index' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首页</font></font></a>
+                <a class="main-nav-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">归档</font></font></a>
+                <a class="main-nav-link" href="{% url 'blog:about' %}" target="_blank"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于</font></font></a>
+            </nav>
+            <div class="d1">
+                <form method="get" action="/search/">
+                    <input type="text" name="q" placeholder=" 搜索">
+                </form>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,55 @@
+<!--分类-->
+<div class="widget-wrap">
+    <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分类</font></font></h3>
+    <div class="widget">
+        <ul class="category-list">
+            {% for category in cate_posts  %}
+                <li class="category-list-item">
+                    <a class="category-list-link" href="/category/{{ category.category }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ category.category__cname }}</font></font></a>
+                    <span class="category-list-count"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ category.count }}</font></font></span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<!--归档-->
+<div class="widget-wrap">
+    <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">归档</font></font></h3>
+    <div class="widget">
+        <ul class="archive-list">
+            {% for time in arc_posts %}
+                <li class="archive-list-item">
+                    <a class="archive-list-link" href="/archive/{{ time.0|date:'Y/m' }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ time.0|date:'Y年m月' }}</font></font></a>
+                    <span class="archive-list-count"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ time.1 }}</font></font></span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<!--近期文章-->
+<div class="widget-wrap">
+    <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">近期文章</font></font></h3>
+    <div class="widget">
+        <ul>
+            {% for blog in recent_posts %}
+                <li>
+                    <a href="/post/{{ blog.id }}" target="_blank"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ blog.title }}</font></font></a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="widget-wrap">
+    <h3 class="widget-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">友情链接</font></font></h3>
+    <div class="widget">
+        <ul>
+            <li>
+                <a href="http://www.bjsxt.com/" target="_blank"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">尚学堂</font></font></a>
+            </li>
+            <li>
+                <a href="http://www.sxt.cn/" target="_blank"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">速学堂</font></font></a>
+            </li>
+        </ul>
+    </div>
+</div>

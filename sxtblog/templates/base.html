@@ -1,0 +1,56 @@
+{% load staticfiles %}
+{#{% load static from staticfiles %}#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人博客</title>
+{#    <link rel="stylesheet" href=" /static/css/style.css">#}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        form {
+            position: relative;
+            width: 150px;
+            margin: 0 auto;
+        }
+
+        .d1 {
+            float: right;
+            line-height: 67px;
+        }
+
+        .d1 input {
+            width: 100px;
+            height: 30px;
+            border: 2px solid darkred;
+            border-radius: 5px;
+            outline: none;
+            background: white;
+            color: #1e242a;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="wrap">
+        <header id="header">
+            {% include 'header.html'  %}
+        </header>
+<div class="outer">
+    <div id="main">
+        {% block main %}
+
+        {% endblock %}
+
+    </div>
+<aside id="sidebar">
+     {% include 'right.html' %}
+</aside>
+</div>
+        <footer id="footer">
+            {% include 'footer.html' %}
+        </footer>
+    </div>
+</div>
+</body>
+</html>

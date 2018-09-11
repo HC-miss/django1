@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    {% for i in post %}
+    <article class="archive-article archive-type-post">
+        <div class="archive-article-inner">
+            <header class="archive-article-header">
+                <a href="/archive/{{ i.created|date:'Y/m' }}" class="archive-article-date">
+                    <time>{{ i.created|date:'Y年m月d日 H:i:s' }}</time>
+                </a>
+
+                <h1 itemprop="name">
+                    <a class="archive-article-title" target="_blank" href="/post/{{ i.id }}">{{ i.title }}</a>
+                </h1>
+            </header>
+        </div>
+    </article>
+    {% endfor %}
+{% endblock main %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

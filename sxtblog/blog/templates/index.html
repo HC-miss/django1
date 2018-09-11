@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{#{% load staticfiles %}#}
+{% block main %}
+    {% for post in posts %}
+    <article class="article article-type-post">
+        <div class="article-meta">
+            <a class="article-date">
+                <time><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ post.created|date:'Y-m-d H:i:s ' }}</font></font></time>
+            </a>
+            <div class="article-category">
+                <a class="article-category-link" href="{% url 'blog:category' post.category.id %}" target="_blank"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ post.category }}</font></font></a>
+            </div>
+        </div>
+
+
+        <div class="article-inner">
+            <header class="article-header">
+                <h1 itemprop="name">
+                    <a class="article-title" href="/post/{{ post.id }}" target="_blank"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ post.title }}</font></font></a>
+                </h1>
+            </header>
+            <div class="article-entry" itemprop="articleBody">
+                <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">前言</font></font></h2>
+                <hr><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                {{ post.desc }}
+
+                </font></font><p class="article-more-link">
+                    <a href="/post/{{ post.id }}" target="_blank"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">阅读全文</font></font></a>
+                </p>
+            </div>
+            <footer class="article-footer">
+                <a data-url="存放文章的url" class="article-share-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分享</font></font></a>
+                <ul class="article-tag-list">
+
+                    {% for t in post.tag.all %}
+                    <li class="article-tag-list-item">
+                        <a class="article-tag-list-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ t.tname }}</font></font></a>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </footer>
+        </div>
+
+    </article>
+
+{% endfor %}
+
+
+    <nav id="page-nav">
+
+
+        {% if posts.has_previous %}
+            <a class="page-number" href="/blog/{{ posts.previous_page_number }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Previou</font></font></a>
+        {% endif %}
+        {% for page in page_range %}
+            {% if page == posts.number %}
+                 <a style="color:black; font-weight: bold;" class="page-number" href="/blog/{{ page }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ i }}</font></font></a>
+            {% else %}
+                 <a style="color:blue;" class="page-number" href="/blog/{{ page }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ page }}</font></font></a>
+            {% endif %}
+        {% endfor %}
+
+        {% if posts.has_next%}
+            <a class="page-number" href="/blog/{{ posts.next_page_number }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Next</font></font></a>
+        {% endif %}
+    </nav>
+
+{% endblock %}

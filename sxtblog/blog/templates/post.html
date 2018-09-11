@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block main %}
+<article class="article article-type-post">
+    <div class="article-meta">
+        <a class="article-date">
+            <time><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ post.created|date:'Y-m-d H:i:s ' }}</font></font></time>
+        </a>
+        <div class="article-category">
+            <a class="article-category-link" href="http://localhost:8000/#" target="_blank"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ post.category.cname }}</font></font></a>
+        </div>
+    </div>
+
+
+    <div class="article-inner">
+        <header class="article-header">
+            <h1 itemprop="name">
+                <a class="article-title" href="/blog/post/21" target="_blank"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ post.title }}</font></font></a>
+            </h1>
+        </header>
+        <div class="article-entry" itemprop="articleBody">
+            <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">前言</font></font></h2>
+            <hr />
+{#            <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#}
+{#            {{ post.desc }}#}
+{#            <hr />#}
+            {{ post.content|safe }}
+{#            </font>#}
+{#            </font>#}
+{#            <p class="article-more-link">#}
+{#                <a href="/blog/post/21" target="_blank"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">阅读全文</font></font></a>#}
+{#            </p>#}
+            <br />
+        </div>
+        <footer class="article-footer">
+            <a data-url="存放文章的url" class="article-share-link"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分享</font></font></a>
+{#            <ul class="article-tag-list">#}
+{##}
+{#                {% for t in post.tag.all %}#}
+{#                <li class="article-tag-list-item">#}
+{#                    <a class="article-tag-list-link" href="http://localhost:8000/#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ t.tname }}</font></font></a>#}
+{#                </li>#}
+{#                {% endfor %}#}
+{##}
+{#            </ul>#}
+        </footer>
+    </div>
+
+
+</article>
+{% endblock %}
