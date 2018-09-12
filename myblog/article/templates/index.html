@@ -1,0 +1,59 @@
+﻿{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<article> 
+  <!--banner begin-->
+ <div class="picsbox"> 
+  <div class="banner">
+    <div id="banner" class="fader">
+      <li class="slide" ><a href="/info/?id={{ articles0.id}}" target="_blank"><img src="{{ MEDIA_URL }}{{ articles.0.img }}"><span class="imginfo">{{ articles.0.title }}</span></a></li>
+      <li class="slide" ><a href="/info/?id={{ articles1.id}}" target="_blank"><img src="{{ MEDIA_URL }}{{ articles.1.img }}"><span class="imginfo">{{ articles.1.title }}</span></a></li>
+      <li class="slide" ><a href="/info/?id={{ articles2.id}}" target="_blank"><img src="{{ MEDIA_URL }}{{ articles.2.img }}"><span class="imginfo">{{ articles.2.title }}</span></a></li>
+      <div class="fader_controls">
+        <div class="page prev" data-target="prev">&lsaquo;</div>
+        <div class="page next" data-target="next">&rsaquo;</div>
+        <ul class="pager_list">
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--banner end-->
+  <div class="toppic">
+    <li> <a href="https://www.csdn.net/" target="_blank"> <i><img src="{% static 'images/csdn.jpg' %}"></i>
+      <h2>CSDN</h2>
+      <span>外链</span> </a> </li>
+    <li> <a href="https://www.djangoproject.com/" target="_blank"> <i><img src="{% static 'images/django.jpg' %}"></i>
+      <h2>Django</h2>
+      <span>技术</span> </a> </li>
+  </div>
+  </div>
+  <div class="blank"></div>
+  <!--blogsbox begin-->
+  <div class="blogsbox">
+    {% for article in articles|dictsortreversed:"creation_time"|slice:":7" %}
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s"  style="overflow: hidden;text-overflow:ellipsis">
+      <h3 class="blogtitle"><a href="/info/?id={{ article.id}}" target="_blank">{{ article.title }}</a></h3>
+      <span class="blogpic"><a href="/info/?id={{ article.id}}" title=""><img src="{{ MEDIA_URL }}{{ article.img }}" alt=""></a></span>
+        <p class="blogtext">{{ article.content|safe|truncatewords:"2" }}</p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="{% url 'article:about' %}">{{ user.uname }}</a></li>
+          <li class="lmname"><a href="/category/?category={{ article.category.cname }}">{{ article.category.cname }}</a></li>
+          <li class="timer">{{ article.creation_time }}</li>
+          <li class="view"><span>{{ article.read_num }}</span>已阅读</li>
+          <li class="like">{{ article.collect_num }}</li>
+        </ul>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+
+{% include 'tebietuijian.html' %}
+
+</article>
+
+{% endblock content %}

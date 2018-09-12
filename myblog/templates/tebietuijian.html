@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<div class="sidebar">
+    <div class="zhuanti">
+      <h2 class="hometitle">特别推荐</h2>
+      <ul>
+        <li> <i><img src="{{ MEDIA_URL }}{{ articles.0.img }}"></i>
+          <p>{{ articles.0.title }}<span><a href="/info/?id={{ articles.0.id}}">阅读</a></span> </p>
+        </li>
+      </ul>
+    </div>
+    <div class="tuijian">
+      <h2 class="hometitle">推荐文章</h2>
+
+      <ul class="tjpic">
+        <i><img src="{% static 'images/toppic01.jpg' %}"></i>
+        <p><a href="#">#######</a></p>
+      </ul>
+
+      <ul class="sidenews">
+        {% for article in articles|slice:'3' %}
+        <li> <i><img src="{{ MEDIA_URL }}{{ article.img }}"></i>
+          <p><a href="/info/?id={{ article.id}}">{{ article.title }}</a></p>
+          <span>{{ article.creation_time }}</span> </li>
+        {% endfor %}
+      </ul>
+
+    </div>
+    <div class="tuijian">
+
+      <h2 class="hometitle">点击排行</h2>
+    {% for article in articles|dictsortreversed:'read_num'|slice:":4"  %}
+        {% if forloop.counter == 1 %}
+      <ul class="tjpic">
+        <i><img src="{{ MEDIA_URL }}{{ article.img }}"></i>
+        <p><a href="/info/?id={{ article.id}}">{{ article.title }}</a></p>
+      </ul>
+        {% else %}
+      <ul class="sidenews">
+{#        {% for article in articles|dictsortreversed:'read_num'|slice:":4"  %}#}
+        <li> <i><img src="{{ MEDIA_URL }}{{ article.img }}"></i>
+          <p><a href="/info/?id={{ article.id}}">{{ article.title }}</a></p>
+          <span>{{ article.creation_time }}</span> </li>
+{#        {% endfor %}#}
+      </ul>
+        {% endif %}
+    {% endfor %}
+    </div>
+    <div class="cloud">
+      <h2 class="hometitle">标签云</h2>
+      <ul>
+        <a href="#">陌上花开</a> <a href="#">校园生活</a><a href="#">校园生活</a><a href="#">SumSung</a> <a href="#">青春</a> <a href="#">温暖</a> <a href="#">阳光</a>
+      </ul>
+    </div>
+  </div>

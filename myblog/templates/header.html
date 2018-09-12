@@ -1,0 +1,51 @@
+<header>
+    <!--menu begin-->
+    <div class="menu">
+        <nav class="nav" id="topnav">
+            <h1 class="logo"><a href="#">博客</a></h1>
+            <li><a href="{% url 'article:index' %}">网站首页</a> </li>
+            <li><a href="{% url 'article:about' %}">关于我</a> </li>
+            <li><a href="{% url 'article:life' %}">慢生活</a>
+                <ul class="sub-nav">
+                    <li><a href="https://www.python.org/">Python</a></li>
+                    <li><a href="https://www.baidu.com/">百度</a></li>
+                    <li><a href="https://www.csdn.net/">CSDN</a></li>
+                    <li><a href="https://github.com/">GitHub</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'article:add' %}">新增博客</a>
+            <li><a href="{% url 'article:time' %}">时间轴</a> </li>
+            <li><a href="{% url 'article:info' %}">内容页</a> </li>
+            <li><a href="/">退出登录</a> </li>
+            <!--search begin-->
+            <div id="search_bar" class="search_bar">
+                <form  id="searchform" action="{% url 'article:search' %}" name="searchform" method="get">
+                    <input class="input" placeholder="想搜点什么呢..." type="text" name="q" id="keyboard">
+                    <span class="search_ico"></span>
+                </form>
+            </div>
+            <!--search end-->
+        </nav>
+    </div>
+    <!--menu end-->
+    <!--mnav begin-->
+    <div id="mnav">
+        <h2><a href="#" class="mlogo">博客</a><span class="navicon"></span></h2>
+        <dl class="list_dl">
+            <dt class="list_dt"> <a href="{% url 'article:index' %}">网站首页</a> </dt>
+            <dt class="list_dt"> <a href="{% url 'article:about' %}">关于我</a> </dt>
+            <dt class="list_dt"> <a href="#">慢生活</a> </dt>
+            <dd class="list_dd">
+                <ul>
+                    <li><a href="https://www.python.org/">Python</a></li>
+                    <li><a href="https://www.baidu.com/">百度</a></li>
+                    <li><a href="https://www.csdn.net/">CSDN</a></li>
+                    <li><a href="https://github.com/">GitHub</a></li>
+                </ul>
+            </dd>
+            <dt class="list_dt"> <a href="{% url 'article:time' %}">时间轴</a> </dt>
+            <dt class="list_dt"> <a href="{% url 'article:info' %}">内容页</a> </dt>
+        </dl>
+    </div>
+    <!--mnav end-->
+</header>

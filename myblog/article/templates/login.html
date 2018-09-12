@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' />
+<script src="{% static 'js/jquery.min.js' %}"></script>
+</head>
+<body>
+<script>$(document).ready(function(c) {
+	$('.close').on('click', function(c){
+		$('.login-form').fadeOut('slow', function(c){
+	  		$('.login-form').remove();
+		});
+	});	  
+});
+</script>
+ <!--SIGN UP-->
+ <h1>Login</h1>
+<div class="login-form">
+	<div class="close"> </div>
+		<div class="head-info">
+			<label class="lbl-1"> </label>
+			<label class="lbl-2"> </label>
+			<label class="lbl-3"> </label>
+		</div>
+			<div class="clear"> </div>
+	<div class="avtar">
+		<img src="{% static 'images/avtar.png' %}" />
+	</div>
+			<form action="{% url 'article:login' %}" method="post">
+                {% csrf_token %}
+					<input type="text" class="text" placeholder="Username" name="uname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
+						<div class="key">
+					<input type="password" placeholder="password"="Password" name="pwd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+						</div>
+                <input type="submit" value="Login" >
+			</form>
+	<div class="signin">
+	</div>
+</div>
+ <div class="copy-rights">
+					<p>Copyright &copy; 2015.Company name All rights reserved.More Templates <a href="#" target="_blank" title="">xxxxx</a> - Collect from <a href="http://www.cssmoban.com/" title="xxxxx" target="_blank">xxxxx</a></p>
+			</div>
+
+</body>
+</html>

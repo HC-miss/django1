@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑博客</title>
+{#     <script type="text/javascript" src='/static/js/tiny_mce_src.js'></script>#}
+{#    一个是项目下的static 一个是应用下的static#}
+     <script type="text/javascript" src='/static/tiny_mce/tiny_mce.js'></script>
+    <script type="text/javascript">
+        tinyMCE.init({
+            'mode':'textareas',
+            'theme':'advanced',
+            'width':400,
+            'height':100
+        });
+    </script>
+    <style>
+        table{
+            text-align: center;
+            margin: 100px auto;
+            opacity: 0.9;
+        }
+        body{
+            background-image: url("/static/images/body.jpg");
+            background-size: 100%;
+        }
+    </style>
+</head>
+<body>
+<form action="{% url 'article:add' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table border="1" cellspacing="0" cellpadding="9" width="600" bgcolor="#e6e6fa">
+        <tr>
+            <td><label for="title">标题</label></td>
+            <td><input type="text" name="title" placeholder="请填写标题" required id="title"></td>
+        </tr>
+        <tr>
+            <td><label for="content">内容</label></td>
+            <td><textarea name="hcontent" required id="content" >请输入内容</textarea></td>
+        </tr>
+        <tr>
+            <td>阅读量</td>
+            <td><input type="text" name="read" required /></td>
+        </tr>
+        <tr>
+            <td>收藏量</td>
+            <td><input type="text" name="collect"  required/></td>
+        </tr>
+        <tr>
+            <td>类别</td>
+            <td>
+                <input type="radio" name="type"  value="游戏" />游戏
+                <input type="radio" name="type"  value="日记"/>日记
+                <input type="radio" name="type"  value="旅游"/>旅游
+                <input type="radio" name="type"  value="文章" />文章
+                <input type="radio" name="type"  value="感悟"/>感悟
+                <input type="radio" name="type"  value="历史"/>历史
+                <input type="radio" name="type"  value="代码"/>代码
+            </td>
+        </tr>
+        <tr>
+            <td>主题图片</td>
+            <td><input type="file" name="img" required></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="提交"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+<article>
+  <h1 class="t_nav"><span>您现在的位置是：首页 > 内容页</span><a href="{% url 'article:index' %}" class="n1">网站首页</a><a href="#" class="n2">内容页</a></h1>
+  <div class="infosbox">
+    <div class="newsview">
+      <h3 class="news_title">{{ article.title }}</h3>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="#">{{ user.uname }}</a></li>
+          <li class="lmname"><a href="#">{{ article.category.cname }}</a></li>
+          <li class="timer">{{ article.creation_time }}</li>
+          <li class="view">{{ article.read_num }}已阅读</li>
+          <li class="like">{{ article.collect_num }}</li>
+        </ul>
+      </div>
+      <div class="tags"><a href="#" target="_blank">个人博客</a> &nbsp; <a href="/category/?category={{ article.category.cname }}" target="_blank">{{ article.category.cname }}</a></div>
+      <div class="news_about"><strong>简介</strong>个人博客</div>
+      <div class="news_con">
+        {{ article.content|safe }}
+      </div>
+    </div>
+
+    <div class="nextinfo">
+        {% if previou %}
+      <p>上一篇：<a href="/info/?id={{ previou.id }}">{{ previou.title }}</a></p>
+        {% endif %}
+     {% if next %}
+      <p>下一篇：<a href="/info/?id={{ next.id }}">{{ next.title }}</a></p>
+    {% endif %}
+    </div>
+
+    <div class="otherlink">
+      <h2>相关文章</h2>
+      <ul>
+{#        {% for i in  %}#}
+        <li><a href="#" title="">个人博客</a></li>
+{#        endfor#}
+      </ul>
+    </div>
+  </div>
+
+{% include 'tebietuijian.html' %}
+</article>
+
+{% endblock content %}

@@ -1,0 +1,57 @@
+﻿{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <style>
+        ul{
+            text-align: center;
+        }
+
+    </style>
+<article>
+  <h1 class="t_nav"><span>您现在的位置是：首页 > 内容页</span><a href="/" class="n1">网站首页</a><a href="/" class="n2">内容页</a></h1>
+  <div class="infosbox">
+    <div class="newsview">
+      <h3 class="news_title">{{ cate.cname }}</h3>
+      <div class="bloginfo">
+{#        <ul>#}
+{#          <li class="author"><a href="/">{{ user.uname }}</a></li>#}
+{#          <li class="lmname"><a href="/">{{ article.category.cname }}</a></li>#}
+{#          <li class="timer">{{ article.creation_time }}</li>#}
+{#          <li class="view">{{ article.read_num }}已阅读</li>#}
+{#          <li class="like">{{ article.collect_num }}</li>#}
+{#        </ul>#}
+      </div>
+      <div class="tags"><a href="#" target="_blank">个人博客</a> &nbsp; <a href="#" target="_blank">{{ cate.cname }}</a></div>
+      <div class="news_about"><strong>简介</strong>个人博客</div>
+      <div class="news_con">
+          {% for i in cates %}
+{#              <div class="bloginfo">#}
+        <ul>
+          <li class="author"><a href="/info/?id={{ i.id}}">{{ i.title }}</a></li>
+          <li class="lmname"><a href="">所属分类：{{ i.category.cname }}</a></li>
+          <li class="time">创建时间：{{ i.creation_time }}</li>
+          <li class="view">阅读量：{{ i.read_num }}</li>
+          <li class="like">收藏量：{{ i.collect_num }}</li>
+        </ul>
+              <hr/><br/>
+{#      </div>#}
+          {% endfor %}
+         </div>
+      </div>
+    </div>
+{% include 'tebietuijian.html' %}
+    <div class="otherlink">
+      <h2>相关文章</h2>
+      <ul>
+{#        {% for i in  %}#}
+        <li><a href="#" title="">个人博客</a></li>
+{#        endfor#}
+      </ul>
+
+    </div>
+
+</article>
+
+{% endblock content %}

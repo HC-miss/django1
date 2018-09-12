@@ -1,0 +1,43 @@
+﻿{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+<div class="pagebg sh"></div>
+<div class="container">
+  <h1 class="t_nav"><span>慢生活，不是懒惰，放慢速度不是拖延时间，而是让我们在生活中寻找到平衡。</span><a href="{% url 'article:index' %}" class="n1">网站首页</a><a href="#" class="n2">慢生活</a></h1>
+  <!--blogsbox begin-->
+  <div class="blogsbox">
+    {% for article in page %}
+    <div class="blogs" data-scroll-reveal="enter bottom over 1s"  style="overflow: hidden;text-overflow:ellipsis">
+      <h3 class="blogtitle"><a href="/info/?id={{ article.id}}" target="_blank">{{ article.title }}</a></h3>
+      <span class="blogpic"><a href="/info/?id={{ article.id}}" title=""><img src="{{ MEDIA_URL }}{{ article.img }}" alt=""></a></span>
+        <p class="blogtext">{{ article.content|safe|truncatewords:"2" }}</p>
+      <div class="bloginfo">
+        <ul>
+          <li class="author"><a href="#">{{ user.uname }}</a></li>
+          <li class="lmname"><a href="#">{{ article.category.cname }}</a></li>
+          <li class="timer">{{ article.creation_time }}</li>
+          <li class="view"><span>{{ article.read_num }}</span>已阅读</li>
+          <li class="like">{{ article.collect_num }}</li>
+        </ul>
+      </div>
+    </div>
+    {% endfor %}
+    
+    <div class="pagelist">
+        <a title="Total record" href="/life/?num=1">&nbsp;
+            <b>首页</b>
+        </a>
+        {% for i in page.paginator.page_range %}
+        <a href="/life/?num={{ i }}">{{ i }}</a>&nbsp;
+        {% endfor %}
+        {% if page.has_next %}
+        <a href="/life/?num={{ page.next_page_number }}">下一页</a>&nbsp;
+        {% endif %}
+        <a href="/life/?num={{ page.paginator.num_pages  }}">尾页</a></div>
+  </div>
+  <!--blogsbox end-->
+ {% include 'tebietuijian.html' %}
+</div>
+{% endblock content %}
